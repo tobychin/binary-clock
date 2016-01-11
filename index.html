@@ -3,61 +3,43 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>Binary Clock</title>
-	<style>
-	.clock-column {
-		display: inline-block;
-	}
-	.dot {
-		height: 2rem;
-		width: 2rem;
-		margin: 0.5rem;
-		background-color: orange;
-		background-size: 100% auto;
-		border-radius: 50%;
-		border-color: orange;
-		border-style: solid;
-	}
-	.dot.off {
-		background-color: transparent;
-	}
-	</style>
 </head>
-<body onload="binaryClock();">
-<!-- <body onload="binaryClock(); setInterval('binaryClock()', 1000)"> -->
+<body onload="binaryClock(); setInterval('binaryClock()', 1000)">
 	<section>
 		<div class="clock-column" data-index="0">
-			<div class="dot" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="1"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 		<div class="clock-column" data-index="1">
-			<div class="dot" data-subindex="3"></div>
-			<div class="dot" data-subindex="2"></div>
+			<div class="dot off" data-subindex="3"></div>
+			<div class="dot off" data-subindex="2"></div>
 			<div class="dot off" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 		<div class="clock-column" data-index="2">
-			<div class="dot" data-subindex="2"></div>
-			<div class="dot" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="2"></div>
+			<div class="dot off" data-subindex="1"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 		<div class="clock-column" data-index="3">
-			<div class="dot" data-subindex="3"></div>
-			<div class="dot" data-subindex="2"></div>
-			<div class="dot" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="3"></div>
+			<div class="dot off" data-subindex="2"></div>
+			<div class="dot off" data-subindex="1"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 		<div class="clock-column" data-index="4">
-			<div class="dot" data-subindex="2"></div>
-			<div class="dot" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="2"></div>
+			<div class="dot off" data-subindex="1"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 		<div class="clock-column" data-index="5">
-			<div class="dot" data-subindex="3"></div>
-			<div class="dot" data-subindex="2"></div>
-			<div class="dot" data-subindex="1"></div>
-			<div class="dot" data-subindex="0"></div>
+			<div class="dot off" data-subindex="3"></div>
+			<div class="dot off" data-subindex="2"></div>
+			<div class="dot off" data-subindex="1"></div>
+			<div class="dot off" data-subindex="0"></div>
 		</div>
 	</section>
+	<link rel="stylesheet" href="./css/styles.css" class="styles">
 	<script src="./js/zepto.min.js"></script>
 	<script src="./js/clock.js"></script>
 </body>

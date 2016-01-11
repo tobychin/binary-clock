@@ -1,37 +1,28 @@
-var start, end;
-
 function binaryClock() {
-  start = window.performance.now();
-  var timeArr, value, intArray;
-
+  var timeArr;
   timeArr = buildTimeArray();
   buildClock(timeArr);
-
-  end = window.performance.now();
-  console.log('time elapsed: ' + (end - start) + ' ms');
 }
 
 function buildClock(timeArray) {
+  var intArray, value;
   // Loop over the columns, (hours, minutes, seconds)
   for (var i = 0; i < timeArray.length; i++) {
     value = converToBinary(timeArray[i]);
-    // console.log("index: " + i + ", " + value);
-    intArray = value.split('');
+    intArray = value.split('').reverse();
     // Loop over the values of hours and minutes, and seconds
-    for(var si = 0; si < intArray.length; si++) {
-      // console.log("subindex: " + si + ", " + intArray[si]);
+    for(var si = 0; si < 4; si++) {
       renderDots(i, si, intArray[si]);
     }
-  };
+  }
 }
 
 function buildTimeArray() {
-  var now, h, m, s, timeArr, value, intArray;
+  var now, h, m, s, timeArr;
   now = new Date();
   h = pad(now.getHours().toString()).split('');
   m = pad(now.getMinutes().toString()).split('');
   s = pad(now.getSeconds().toString()).split('');
-  console.log('now: ' + now);
   timeArr = [];
   return timeArr.concat(h).concat(m).concat(s);
 }
@@ -45,10 +36,9 @@ function pad(num, max){
 }
 
 function renderDots (index, subindex, value) {
-  console.log('value: ' + value + '\n index: ' + index + ', subindex: ' + subindex);
   if (parseInt(value) === 1) {
-    $('[data-index="' + index + '"] [data-subindex="' + subindex + '"]').addClass('off');
-  } else {
     $('[data-index="' + index + '"] [data-subindex="' + subindex + '"]').removeClass('off');
+  } else {
+    $('[data-index="' + index + '"] [data-subindex="' + subindex + '"]').addClass('off');
   }
 }
