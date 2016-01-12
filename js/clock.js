@@ -35,7 +35,7 @@ function converToBinary(value) {
   return parseInt(value).toString(2);
 }
 
-function pad(num, max){
+function pad(num){
   return ('0000' + num).slice(-2);
 }
 
