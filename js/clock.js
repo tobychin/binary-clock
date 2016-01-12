@@ -24,6 +24,7 @@ function buildTimeArray() {
   m = pad(now.getMinutes().toString()).split('');
   s = pad(now.getSeconds().toString()).split('');
   timeArr = [];
+  console.log('now: ' + now);
   return timeArr.concat(h).concat(m).concat(s);
 }
 
@@ -36,9 +37,11 @@ function pad(num, max){
 }
 
 function renderDots (index, subindex, value) {
-  if (parseInt(value) === 1) {
-    $('[data-index="' + index + '"] [data-subindex="' + subindex + '"]').removeClass('off');
-  } else {
-    $('[data-index="' + index + '"] [data-subindex="' + subindex + '"]').addClass('off');
+  var el;
+  el = document.querySelector('[data-index="' + index + '"] [data-subindex="' + subindex + '"');
+  if (value === '1') {
+    el.classList.remove('off');
+  } else if (!!el) {
+    el.classList.add('off');
   }
 }
