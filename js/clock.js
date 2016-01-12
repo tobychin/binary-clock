@@ -1,7 +1,10 @@
 function binaryClock() {
   var timeArr;
-  timeArr = buildTimeArray();
-  buildClock(timeArr);
+  setInterval(
+    function() {
+      timeArr = buildTimeArray();
+      buildClock(timeArr);
+    }, 1000);
 }
 
 function buildClock(timeArray) {
