@@ -1,0 +1,17 @@
+{
+  "name"    : "binary-clock",
+  "version" : "1.2.2",
+  "build-version" : "0.1.0",
+  "main"    : "main.js",
+  "description": "A simple, JavaScript binary clock in the six column variety (two for hours, two for minutes, two for seconds).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobychin/binary-clock.git"
+  },
+  "author": "Toby Chin",
+  "companyName": "Toby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tobychin/binary-clock/issues"
+  }
+}

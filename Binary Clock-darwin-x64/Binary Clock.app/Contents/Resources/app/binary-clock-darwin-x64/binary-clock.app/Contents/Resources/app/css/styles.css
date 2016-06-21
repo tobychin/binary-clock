@@ -1,0 +1,18 @@
+.clock-column {
+	display: inline-block;
+}
+
+.dot {
+	height: 2rem;
+	width: 2rem;
+	margin: 0.5rem;
+	background-color: orange;
+	background-size: 100% auto;
+	border-radius: 50%;
+	border-color: orange;
+	border-style: solid;
+}
+
+.dot.off {
+	background-color: transparent;
+}
