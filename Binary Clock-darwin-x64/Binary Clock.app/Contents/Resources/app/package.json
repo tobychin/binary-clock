@@ -1,10 +1,11 @@
 {
-  "name"    : "Binary Clock",
+  "name": "binary-clock",
   "productName": "Binary Clock",
-  "version" : "1.2.2",
-  "build-version" : "0.1.0",
-  "main"    : "main.js",
+  "version": "1.0.0",
+  "build-version": "1.0.0",
+  "main": "main.js",
   "description": "A simple, JavaScript binary clock in the six column variety (two for hours, two for minutes, two for seconds).",
+  "icon": "./icon",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tobychin/binary-clock.git"
@@ -14,5 +15,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tobychin/binary-clock/issues"
+  },
+  "devDependencies": {
+    "electron": "~1.6.2"
   }
 }

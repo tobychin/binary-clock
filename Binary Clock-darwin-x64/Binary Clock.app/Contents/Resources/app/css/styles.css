@@ -1,15 +1,30 @@
+body {
+  background-color: black;
+}
+
+section {
+  width: 100%;
+}
+
 .clock-column {
 	display: inline-block;
+  width: 16%;
+}
+
+.dot:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
 }
 
 .dot {
-	height: 2rem;
-	width: 2rem;
+  position: relative;
+	max-width: 100%;
 	margin: 0.5rem;
-	background-color: orange;
+	background-color: firebrick;
+	border-color: firebrick;
 	background-size: 100% auto;
 	border-radius: 50%;
-	border-color: orange;
 	border-style: solid;
 }
 
