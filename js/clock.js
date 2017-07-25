@@ -4,13 +4,13 @@ const BinaryClock = {
     setInterval(() => {
         timeArr = this.buildTimeArray();
         this.buildClock(timeArr);
-      }, 5);
+    }, 5);
   },
 
   buildClock: function(timeArray) {
     let intArray, value;
     // Loop over the columns, (hours, minutes, seconds)
-    for (let i = 0; i < timeArray.length; i++) {
+    for (let i in timeArray) {
       value = this.convertToBinary(timeArray[i]);
       intArray = value.split('').reverse();
       // Loop over the values of hours and minutes, and seconds
@@ -22,17 +22,17 @@ const BinaryClock = {
 
   buildTimeArray: function() {
     const now = new Date();
-    let h = this.pad(now.getHours().toString()).split(''),
-        m = this.pad(now.getMinutes().toString()).split(''),
-        s = this.pad(now.getSeconds().toString()).split(''),
-        timeArr = [];
-    console.log('now: ' + now);
-    return timeArr.concat(h).concat(m).concat(s);
+    let h = BinaryClock.convertToArray(now.getHours()),
+        m = BinaryClock.convertToArray(now.getMinutes()),
+        s = BinaryClock.convertToArray(now.getSeconds());
+    return h.concat(m).concat(s);
   },
 
-  convertToBinary: (value) => parseInt(value).toString(2),
+  convertToBinary: (x) => parseInt(x).toString(2),
 
-  pad: (number) => (`0000${number}`).slice(-2),
+  convertToArray: (x) => BinaryClock.pad(x.toString()).split(''),
+
+  pad: (x) => (`0000${x}`).slice(-2),
 
   renderDots: function (index, subindex, value) {
     let el = document.querySelector(`[data-index="${index}"] [data-subindex="${subindex}"`);
@@ -41,11 +41,8 @@ const BinaryClock = {
     } else if (!!el) {
       el.classList.add('off');
     }
-  }
+  },
+
 };
 
-console.log(BinaryClock.convertToBinary('56'));
-console.log(BinaryClock.pad('34'));
-console.log(BinaryClock.buildTimeArray());
-
-if (document != undefined) { BinaryClock.initialize(); }
+if (document !== undefined) { BinaryClock.initialize(); }
