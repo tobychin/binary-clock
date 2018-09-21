@@ -1,48 +1,55 @@
 const BinaryClock = {
-  initialize: function() {
-    let timeArr;
-    setInterval(() => {
-        timeArr = this.buildTimeArray();
-        this.buildClock(timeArr);
-    }, 5);
+  _utilities: {
+    toArray: (str) => str.split(''),
+    padWithZeros: function (y = 2) { return function (x) { return (`0000${x}`).slice(- y); }; },
+    convertToBinary: (x) => parseInt(x).toString(2)
   },
 
-  buildClock: function(timeArray) {
-    let intArray, value;
-    // Loop over the columns, (hours, minutes, seconds)
-    for (let i in timeArray) {
-      value = this.convertToBinary(timeArray[i]);
-      intArray = value.split('').reverse();
-      // Loop over the values of hours and minutes, and seconds
-      for(let si = 0; si < 4; si++) {
-        this.renderDots(i, si, intArray[si]);
-      }
-    }
-  },
-
-  buildTimeArray: function() {
+  buildTime: function() {
+    f = BinaryClock._utilities;
     const now = new Date();
-    let h = BinaryClock.convertToArray(now.getHours()),
-        m = BinaryClock.convertToArray(now.getMinutes()),
-        s = BinaryClock.convertToArray(now.getSeconds());
-    return h.concat(m).concat(s);
+    return {
+      hours: R.pipe(f.padWithZeros(), f.toArray)(now.getHours()),
+      minutes: R.pipe(f.padWithZeros(), f.toArray)(now.getMinutes()),
+      seconds: R.pipe(f.padWithZeros(), f.toArray)(now.getSeconds())
+    };
   },
 
-  convertToBinary: (x) => parseInt(x).toString(2),
-
-  convertToArray: (x) => BinaryClock.pad(x.toString()).split(''),
-
-  pad: (x) => (`0000${x}`).slice(-2),
-
-  renderDots: function (index, subindex, value) {
-    let el = document.querySelector(`[data-index="${index}"] [data-subindex="${subindex}"`);
-    if (value === '1') {
-      el.classList.remove('off');
-    } else if (!!el) {
-      el.classList.add('off');
-    }
-  },
-
+  clockTime: function () {
+    var f = BinaryClock._utilities;
+    var timeObj = BinaryClock.buildTime();
+    var convert = R.pipe(f.convertToBinary, f.padWithZeros(4), f.toArray);
+    var mediumConvert = R.pipe(f.convertToBinary, f.padWithZeros(3), f.toArray);
+    var shortConvert = R.pipe(f.convertToBinary, f.padWithZeros(2), f.toArray);
+    return {
+      hours: {
+        first: shortConvert(timeObj.hours[0]),
+        second: convert(timeObj.hours[1])
+      },
+      minutes: {
+        first: mediumConvert(timeObj.minutes[0]),
+        second: convert(timeObj.minutes[1])
+      },
+      seconds: {
+        first: mediumConvert(timeObj.seconds[0]),
+        second: convert(timeObj.seconds[1])
+      }
+    };
+  }
 };
 
-if (document !== undefined) { BinaryClock.initialize(); }
+var clock = new Vue({
+  el: '#app',
+  data: {
+    time: BinaryClock.clockTime()
+  },
+  methods: {
+    isOff: (int) => int == 0
+  }
+});
+
+function updateTime() {
+  clock.time = BinaryClock.clockTime();
+}
+updateTime();
+setInterval(updateTime, 5);

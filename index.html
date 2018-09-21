@@ -2,45 +2,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8"/>
-	<title>Binary Clock</title>
+  <meta charset="UTF-8"/>
+  <title>Binary Clock</title>
 </head>
 <body>
-	<section>
-		<div class="clock-column" data-index="0">
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-		<div class="clock-column" data-index="1">
-			<div class="dot off" data-subindex="3"></div>
-			<div class="dot off" data-subindex="2"></div>
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-		<div class="clock-column" data-index="2">
-			<div class="dot off" data-subindex="2"></div>
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-		<div class="clock-column" data-index="3">
-			<div class="dot off" data-subindex="3"></div>
-			<div class="dot off" data-subindex="2"></div>
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-		<div class="clock-column" data-index="4">
-			<div class="dot off" data-subindex="2"></div>
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-		<div class="clock-column" data-index="5">
-			<div class="dot off" data-subindex="3"></div>
-			<div class="dot off" data-subindex="2"></div>
-			<div class="dot off" data-subindex="1"></div>
-			<div class="dot off" data-subindex="0"></div>
-		</div>
-	</section>
-	<link rel="stylesheet" href="./css/styles.css" class="styles">
-	<script src="./js/clock.js"></script>
+  <section id="app">
+    <div class="clock-column">
+      <div v-for="i in time.hours.first" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+    <div class="clock-column">
+      <div v-for="i in time.hours.second" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+    <div class="clock-column">
+      <div v-for="i in time.minutes.first" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+    <div class="clock-column">
+      <div v-for="i in time.minutes.second" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+    <div class="clock-column">
+      <div v-for="i in time.seconds.first" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+    <div class="clock-column">
+      <div v-for="i in time.seconds.second" class="dot" v-bind:class="{off: isOff(i)}"></div>
+    </div>
+  </section>
+  <link rel="stylesheet" href="./css/styles.css" class="styles">
+  <script src="./node_modules/ramda/dist/ramda.min.js"></script>
+  <script src="./node_modules/vue/dist/vue.min.js"></script>
+  <script src="./js/clock.js"></script>
 </body>
 </html>
