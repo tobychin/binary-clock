@@ -16,7 +16,5 @@
   "bugs": {
     "url": "https://github.com/tobychin/binary-clock/issues"
   },
-  "devDependencies": {
-    "electron": "~1.6.2"
-  }
+  "devDependencies": {}
 }
