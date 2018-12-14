@@ -17,7 +17,6 @@
     "url": "https://github.com/tobychin/binary-clock/issues"
   },
   "devDependencies": {
-    "electron": "~1.6.2",
     "ramda": "^0.25.0",
     "vue": "^2.5.17"
   }
