@@ -2,13 +2,10 @@ body {
   background-color: black;
 }
 
-section {
-  width: 100%;
-}
-
 .clock-column {
-	display: inline-block;
-  width: 16%;
+  display: inline-block;
+  width: calc(100% / 7);
+  margin: 0 auto;
 }
 
 .dot:before {
@@ -19,15 +16,17 @@ section {
 
 .dot {
   position: relative;
-	max-width: 100%;
-	margin: 0.5rem;
-	background-color: firebrick;
-	border-color: firebrick;
-	background-size: 100% auto;
-	border-radius: 50%;
-	border-style: solid;
+  max-width: 100%;
+  margin: 0.5rem;
+  background-color: firebrick;
+  border-color: firebrick;
+  background-size: 100% auto;
+  border-radius: 50%;
+  border-style: solid;
+  height: calc(100vh / 5);
+  width: calc(100vh / 5);
 }
 
 .dot.off {
-	background-color: transparent;
+  background-color: transparent;
 }
